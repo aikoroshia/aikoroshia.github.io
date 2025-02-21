@@ -125,21 +125,33 @@ span{
 }
 
 .home-img{
-    border-radius: 50%;
+    position: relative;
+    width: 32vw;
+    height: 32vw;
 }
 
 .home-img img{
-    position: relative;
-    width: 32vw;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 18%;
     box-shadow: 0 0 25px solid #CF9FFF;
     cursor: pointer;
-    transition: 0.2s linear;
+    transition: opacity 0.3s ease;
 }
 
 .home-img img:hover{
-    font-size: 1.8rem;
-    font-weight: 500;
+    transition: all 0.5 ease;
+}
+
+.home-img:hover .gen {
+    opacity:0;
+}
+.home-img:hover .sen {
+    opacity:1;
 }
 
 .social-icons a{
