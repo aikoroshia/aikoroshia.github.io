@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Portfolio - Your Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<header>
+    <!-- Same header as your main page -->
+    <a href="index.html" class="logo">Kelibidi</a>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="#">Contact</a>
+        <!-- Other navigation links -->
+    </nav>
+</header>
+
+<body>
+    <div class="gallery-wrap">
+        <i class="fa-solid fa-circle-arrow-left" id="backBtn"></i>
+        <div class="gallery">
+            <div>
+                <span><img src="figma/gdmvalentines.png" alt="gen nendroid"></span>
+                <span><img src="figma/helena talk.png" alt="senku nendroid"></span>
+                <span><img src="figma/gdm inktober.png" alt="ryusui nendroid"></span>
+            </div>
+            <div>
+                <span><img src="figma/meet the exec1.png" alt="gen nendroid"></span>
+                <span><img src="figma/meet the exec2.png" alt="senku nendroid"></span>
+                <span><img src="figma/extra life ig post1.png" alt="ryusui nendroid"></span>
+            </div>
+        </div>
+        <i class="fa-solid fa-circle-arrow-right" id="nextBtn"></i>
+    </div>
+
+<script>
+
+    let scrollContainer = document.querySelector(".gallery");
+    let backBtn = document.getElementById("backBtn");
+    let nextBtn = document.getElementById("nextBtn");
+
+    scrollContainer.addEventListener("wheel", (evt)=> {
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+        scrollContainer.style.scrollBehavior = "auto";
+    });
+
+    nextBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft += 900;
+    });
+    backBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft -= 900;
+    });
+</script>    
+
+</body>
+</html>
