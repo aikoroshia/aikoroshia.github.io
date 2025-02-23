@@ -159,9 +159,9 @@ span{
 }
 
 .cursor-img img {
-    width: 111px; 
-    height: 111px;
-animation: float 1.2s steps(5) infinite;
+    width: 8vw; 
+    height: auto;
+    animation: float 1.2s steps(5) infinite;
 }
 @keyframes float {
     0% {
@@ -291,7 +291,7 @@ animation: float 1.2s steps(5) infinite;
     .home-content h1{
         font-size: 5rem;
     }
-    .home-imp img{
+    .home-img img{
         width:70vh;
         margin-top: 4rem;
     }
