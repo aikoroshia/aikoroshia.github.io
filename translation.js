@@ -17,7 +17,15 @@ const translations = {
         'aboutThanks': 'Thanks for stopping by! 🌸',
         'portfolioTitle': 'Posts made for GameDev McGill\'s instagram on Figma',
         'portfolioMore': 'More to be added... but you can check out my <a href="https://ringed-cattle-494.notion.site/Kelly-Lio-Design-Portfolio-19489f682ee28013abf0de4172d96b4c" class="portfolio-link">Notion portfolio</a> in the meantime!',
-        'projectsMessage': 'Website in construction...'
+        'projectsMessage': 'Website in construction...',
+        'typingIntro': 'I\'m a',
+        'typingWords': [
+            'Web Developer.',
+            'UI/UX Designer.',
+            '2D Artist.',
+            'Game Developer.',
+            'Software Engineer.'
+        ]
     },
     'fr': {
         'home': 'Accueil',
@@ -36,7 +44,15 @@ const translations = {
         'aboutThanks': 'Merci de votre visite! 🌸',
         'portfolioTitle': 'Publications réalisées pour Instagram de GameDev McGill sur Figma',
         'portfolioMore': 'Plus à venir... mais vous pouvez consulter mon <a href="https://ringed-cattle-494.notion.site/Kelly-Lio-Design-Portfolio-19489f682ee28013abf0de4172d96b4c" class="portfolio-link">portfolio Notion</a> en attendant!',
-        'projectsMessage': 'Site web en construction...'
+        'projectsMessage': 'Site web en construction...',
+        'typingIntro': 'Je suis',
+        'typingWords': [
+            'Développeuse Web.',
+            'Designer UI/UX.',
+            'Artiste 2D.',
+            'Développeuse de jeux.',
+            'Ingénieur en logiciel.'
+        ]
     }
 };
 
@@ -80,6 +96,16 @@ function applyTranslation(lang) {
             if (resumeBtn) {
                 resumeBtn.textContent = translations[lang]['resumeButton'];
             }
+
+            // Update typing text
+            const typingText = document.querySelector('.typing-text');
+            if (typingText) {
+                // Replace the entire text content, preserving the <span> for animation
+                typingText.innerHTML = `${translations[lang]['typingIntro']} <span></span>`;
+            }
+            // Update typing animation
+            updateTypingAnimation(lang);
+                        
             break;
         
         case 'about-page':
@@ -142,3 +168,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply initial translation
     applyTranslation(savedLang);
 });
+
+// Function to update typing animation
+function updateTypingAnimation(lang) {
+    const style = document.createElement('style');
+    style.id = 'typing-animation-style';
+    
+    // Remove any existing dynamic style
+    const existingStyle = document.getElementById('typing-animation-style');
+    if (existingStyle) {
+        existingStyle.remove();
+    }
+
+    // Create new keyframes based on current language
+    const words = translations[lang]['typingWords'];
+    style.textContent = `
+    @keyframes words {
+        0%,20% {
+            content: "${words[0]}";
+        }
+        21%,40% {
+            content: "${words[1]}";
+        }
+        41%,60% {
+            content: "${words[2]}";
+        }
+        61%, 80% {
+            content: "${words[3]}";
+        }
+        81%, 100% {
+            content: "${words[4]}";
+        }
+    }`;
+
+    document.head.appendChild(style);
+}
